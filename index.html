@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mensaje de Amor Interactivo</title>
+  <style>
+    html, body {
+      margin: 0; 
+      padding: 0; 
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+      color: #ffebee;
+      background: url('https://i.pinimg.com/originals/1a/06/44/1a064404b593627f184bb64eb4bdf8cc.gif') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+    
+    .mensaje-container {
+      width: 90vw;
+      max-width: 1000px;
+      min-height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    
+    .mensaje {
+      background: rgba(0, 0, 0, 0.85);
+      padding: 40px;
+      border-radius: 25px;
+      font-size: 1.8rem;
+      line-height: 1.8;
+      width: 100%;
+      min-height: 200px;
+      position: relative;
+      box-shadow: 0 0 30px rgba(255, 105, 180, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 2px solid rgba(255, 182, 193, 0.3);
+      margin-bottom: 30px;
+    }
+    
+    .linea {
+      position: absolute;
+      width: calc(100% - 80px);
+      padding: 0 40px;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+      text-shadow: 0 0 10px rgba(255, 20, 147, 0.7);
+      text-align: center;
+      box-sizing: border-box;
+      word-break: break-word;
+    }
+    
+    .visible {
+      opacity: 1;
+    }
+    
+    .corazon {
+      color: #ff69b4;
+      text-shadow: 0 0 15px #ff1493;
+      font-size: 1.2em;
+      vertical-align: middle;
+      display: inline-block;
+      animation: latido 1s infinite alternate;
+    }
+    
+    .te-amo {
+      position: fixed;
+      font-size: 2rem;
+      color: #ff69b4;
+      text-shadow: 0 0 20px #ff1493;
+      pointer-events: none;
+      animation: flotar 3s ease-in-out forwards;
+      z-index: 100;
+    }
+    
+    .final-container {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      width: 100%;
+      max-width: 900px;
+    }
+    
+    .foto-wrapper {
+      position: relative;
+      flex: 1;
+      max-width: 500px;
+    }
+    
+    .foto-final {
+      width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+      border: 8px solid #ff69b4;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
+      display: none;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .corazon-foto {
+      position: absolute;
+      width: calc(100% + 60px);
+      height: calc(100% + 60px);
+      top: -30px;
+      left: -30px;
+      animation: latido 1.5s infinite alternate;
+      pointer-events: none;
+      display: none;
+      z-index: 1;
+    }
+    
+    .gif-wrapper {
+      flex: 1;
+      max-width: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .gif-corazones {
+      width: 100%;
+      max-height: 60vh;
+      border-radius: 20px;
+      border: 8px solid rgba(255, 105, 180, 0.6);
+      box-shadow: 0 0 30px rgba(255, 20, 147, 0.6);
+      display: none;
+    }
+    
+    @keyframes latido {
+      0% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.8; }
+    }
+    
+    @keyframes flotar {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="mensaje-container">
+    <div class="mensaje">
+      <div class="linea visible">Tú eres mi chica perfecta <span class="corazon">🩷</span>, mi niña hermosa, mi consentida<span class="corazon">🩷</span>, mi enojona, mi doña bromista jsjsj. Me encantas que seas así, me haces reír en cada momento <span class="corazon">🩷</span></div>
+      <div class="linea">Cada momento a tu lado es único<span class="corazon">🩷</span> y maravilloso, me haces súper súper feliz. Eres mi todo, mi universo<span class="corazon">🩷</span></div>
+      <div class="linea">Recuerda que tus dos amores te aman muchísimo, así que sigue, mi amor, dándolo todo de ti y siendo la mejor de todas<span class="corazon">🩷🩷🩷🩷🩷</span></div>
+    </div>
+    
+    <div class="final-container">
+      <div class="foto-wrapper">
+        <img id="foto-final" class="foto-final" alt="Nuestra foto">
+        <svg class="corazon-foto" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <path fill="none" stroke="#ff69b4" stroke-width="10" 
+                d="M100,30 C80,0 30,10 30,60 C30,100 100,130 100,170 C100,130 170,100 170,60 C170,10 120,0 100,30 Z"/>
+        </svg>
+      </div>
+      <div class="gif-wrapper">
+        <img class="gif-corazones" src="https://i.pinimg.com/originals/c5/c6/73/c5c673dc3cb4ebd03675713b984a25cd.gif" alt="Corazones animados">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const lineas = document.querySelectorAll('.linea');
+    let indice = 0;
+    const tiempoVisible = 6000;
+    const tiempoTransicion = 1500;
+    let contadorClicks = 0;
+    const totalLineas = lineas.length;
+    const fotoFinal = document.getElementById('foto-final');
+    const corazonFoto = document.querySelector('.corazon-foto');
+    const gifCorazones = document.querySelector('.gif-corazones');
+
+    // Función para mostrar "Te amo" al hacer clic/toque
+    function mostrarTeAmo(event) {
+      const teAmo = document.createElement('div');
+      teAmo.className = 'te-amo';
+      teAmo.textContent = 'Te amoooo muchísimo 🩷🩷🩷';
+      teAmo.style.left = `${event.clientX}px`;
+      teAmo.style.top = `${event.clientY}px`;
+      document.body.appendChild(teAmo);
+      
+      setTimeout(() => {
+        teAmo.remove();
+      }, 3000);
+    }
+
+    function mostrarSiguiente() {
+      lineas[indice].classList.remove('visible');
+      indice = (indice + 1) % lineas.length;
+      contadorClicks++;
+      
+      setTimeout(() => {
+        lineas[indice].classList.add('visible');
+        
+        // Mostrar foto y GIF cuando terminen todos los mensajes
+        if (contadorClicks >= totalLineas) {
+          setTimeout(() => {
+            fotoFinal.src = 'nuestra-foto.jpg';
+            fotoFinal.style.display = 'block';
+            corazonFoto.style.display = 'block';
+            gifCorazones.style.display = 'block';
+          }, tiempoVisible);
+        }
+      }, tiempoTransicion);
+    }
+
+    // Eventos
+    document.body.addEventListener('click', mostrarTeAmo);
+    document.body.addEventListener('touchstart', mostrarTeAmo);
+    
+    // Iniciar el ciclo
+    setInterval(mostrarSiguiente, tiempoVisible + tiempoTransicion);
+    
+    // Ajustar tamaño automáticamente
+    function ajustarTamaño() {
+      const mensaje = document.querySelector('.mensaje');
+      let maxHeight = 0;
+      
+      lineas.forEach(linea => {
+        linea.style.display = 'block';
+        linea.style.position = 'relative';
+        linea.style.opacity = '1';
+        maxHeight = Math.max(maxHeight, linea.offsetHeight);
+        linea.style.display = '';
+        linea.style.position = '';
+        linea.style.opacity = '';
+      });
+      
+      mensaje.style.minHeight = `${maxHeight + 80}px`;
+    }
+
+    window.addEventListener('load', ajustarTamaño);
+    window.addEventListener('resize', ajustarTamaño);
+  </script>
+</body>
+</html>
